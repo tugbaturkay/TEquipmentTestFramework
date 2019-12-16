@@ -16,12 +16,13 @@ namespace TEquipmentTestFramework.Pages
         public ShoppingCartPage changeQuantity(int quantity)
         {
             waitForClickability(quantityInputField).Click();
-            Thread.Sleep(100);
+            Thread.Sleep(200);
             quantityInputField.Clear();
-            Thread.Sleep(100);
+            Thread.Sleep(200);
             quantityInputField.SendKeys(quantity.ToString());
-            Thread.Sleep(100);
-            quantityInputField.SendKeys(Keys.Enter);
+            Thread.Sleep(200);
+            Driver.FindElement(By.XPath("//h3[text()='Your Cart']")).Click();
+            
             return this;
         }
 

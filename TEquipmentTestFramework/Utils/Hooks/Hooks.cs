@@ -55,7 +55,7 @@ namespace TEquipmentTestFramework.Utils.Hooks
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
-            htmlReporter = new ExtentHtmlReporter(System.IO.Directory.GetCurrentDirectory() + "\\ExtentReports\\TEquipmentReports.html");
+            htmlReporter = new ExtentHtmlReporter(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\ExtentReports\\TEquipmentReports.html");
             extentReport = new ExtentReports();
             extentReport.AttachReporter(htmlReporter);
         }
