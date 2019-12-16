@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,14 +43,20 @@ namespace TEquipmentTestFramework.StepDefinitions
                 .clickAddToCartButton()
                 .clickViewCartButton()
                 .changeQuantity(2)
-                .clickCheckoutButton();
+                .clickCheckoutButton()
+                .fillOutShippingInfo()
+                .clickShippingMethodButton()
+                .fillOutShippingMethod()
+                .submitOrder();
         }
 
         [Then(@"User sees OrderConfirmationPage")]
         public void ThenUserSeesOrderConfirmationPage()
         {
             //ScenarioContext.Current.Pending();
-            ScenarioContext.Current["OrderNumber"] = "dummyOrderNumber";//InstanceOf<OrderConfirmatinPage>().getOrderNumber();
+            var printThisPageButton = Driver.FindElement(By.CssSelector("a.btn.btn-secondary.d-none"));
+            Assert.IsTrue(printThisPageButton.Displayed);
+            ScenarioContext.Current["OrderNumber"] = InstanceOf<OrderConfirmationPage>().getOrderNumber();
         }
 
     }

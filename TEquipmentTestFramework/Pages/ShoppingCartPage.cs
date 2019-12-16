@@ -34,7 +34,7 @@ namespace TEquipmentTestFramework.Pages
             }
             catch (ElementClickInterceptedException)
             {
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
                 waitForClickability(checkOutButton).Click();
             }
             
